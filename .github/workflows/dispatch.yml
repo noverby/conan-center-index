@@ -1,0 +1,14 @@
+name: Dispatch conan builds
+
+on: [push, create]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: noverby/repository-dispatch@v1.1.1
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          event-type: conan
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
