@@ -4,7 +4,7 @@ on:
     types: [conan]
 jobs:
   build:
-    runs-on: ${{ github.event.client_payload.settings.tags }}
+    runs-on: ${{ github.event.client_payload.tags }}
     steps:
     - uses: actions/checkout@v2
       with:
@@ -18,5 +18,5 @@ jobs:
     - name: Conan Create
       run: |
         conan config install https://gitlab.com/aivero/public/conan/conan-config.git
-        conan config set general.default_profile=${{ github.event.client_payload.settings.profile }}
+        conan config set general.default_profile=${{ github.event.client_payload.profile }}
         conan create . ${{ github.event.client_payload.package }}/${{ github.event.client_payload.version }}
