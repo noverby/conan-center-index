@@ -4,7 +4,7 @@ on:
     types: [conan]
 jobs:
   build:
-    runs-on: [ ${{ github.event.client_payload.os }}, ${{ github.event.client_payload.arch }} ]
+    runs-on: ${{ github.event.client_payload.tags }}
     steps:
     - uses: actions/checkout@v2
       with:
