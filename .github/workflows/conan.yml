@@ -4,7 +4,7 @@ on:
     types: [conan]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [${{ github.event.client_payload.os }}, ${{ github.event.client_payload.arch }} ]
     steps:
     - uses: actions/checkout@v2
       with:
@@ -18,5 +18,5 @@ jobs:
     - name: Conan Create
       run: |
         conan config install https://gitlab.com/aivero/public/conan/conan-config.git
-        conan config set general.default_profile=linux_x86_64
-        conan create . aivero/stable
+        conan config set general.default_profile=${{ github.event.client_payload.settings.profile }}
+        conan create . ${{ github.event.client_payload.package }}/${{ github.event.client_payload.version }}
