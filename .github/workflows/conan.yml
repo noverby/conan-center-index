@@ -21,4 +21,4 @@ jobs:
         package: ${{ github.event.client_payload.package }}
         version: ${{ github.event.client_payload.version }}
         profile: ${{ github.event.client_payload.profile }}
-        folder: ${{ github.event.client_payload.folder }}
+        path: ${{ github.event.client_payload.path }}
