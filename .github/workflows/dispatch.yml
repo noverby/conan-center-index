@@ -1,4 +1,4 @@
-name: Dispatch conan builds
+name: Dispatch Conan builds
 
 on: [push, create]
 
@@ -6,9 +6,8 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     steps:
-      - name: Repository Dispatch
-        uses: noverby/repository-dispatch@v1.1.1
+      - name: Conan Dispatch
+        uses: aivero/conan-dispatch-action@test
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           event-type: conan
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
