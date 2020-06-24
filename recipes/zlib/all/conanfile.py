@@ -5,7 +5,7 @@ class ZlibConan(conans.ConanFile):
     version = conans.tools.get_env("GIT_TAG", "1.2.11")
     license = "Zlib"
     description = "A Massively Spiffy Yet Delicately Unobtrusive Compression Library " "(Also Free, Not to Mention Unencumbered by Patents)"
-    settings = "os", "arch", "compiler", "build_type"
+    settings = {"os": ["Linux"], "arch": ["x86_64", "armv8"]}
 
     def build_requirements(self):
         self.build_requires("generators/1.0.0@%s/stable" % self.user)
