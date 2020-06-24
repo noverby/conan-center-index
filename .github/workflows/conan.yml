@@ -12,11 +12,13 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8.3'
+        python-version: '3.x'
     - name: Install dependencies
       run: python -m pip install --upgrade pip conan
     - name: Conan Create
-      run: |
-        conan config install https://gitlab.com/aivero/public/conan/conan-config.git
-        conan config set general.default_profile=${{ github.event.client_payload.profile }}
-        conan create . ${{ github.event.client_payload.package }}/${{ github.event.client_payload.version }}
+      uses: aivero/conan-action@test
+      with:
+        package: ${{ github.event.client_payload.package }}
+        version: ${{ github.event.client_payload.version }}
+        profile: ${{ github.event.client_payload.profile }}
+        folder: ${{ github.event.client_payload.folder }}
