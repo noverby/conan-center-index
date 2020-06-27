@@ -10,7 +10,7 @@ jobs:
       with:
         ref: ${{ github.event.client_payload.ref }}
     - name: Install dependencies
-      run: python -m pip install --upgrade pip conan
+      run: python3 -m pip install --upgrade pip conan
     - name: Conan Create
       uses: aivero/conan-action@test
       with:
