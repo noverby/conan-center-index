@@ -4,7 +4,7 @@ import os
 
 class LlvmConan(ConanFile):
     description = "Compiler toolchain"
-    license = "custom:Apache 2.0 with LLVM Exception"
+    license = "custom"
     settings = {"os": ["Linux"], "arch": ["x86_64", "armv8"]}
 
     def source(self):
